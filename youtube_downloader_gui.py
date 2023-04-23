@@ -1,5 +1,5 @@
 from tkinter import *
-from YT_downloader import save_cut
+from youtube_downloader import save_cut
 
 def gui_main(
         font_type="Calibri",
@@ -9,7 +9,6 @@ def gui_main(
     quality = 0
 
     root = Tk()
-    #root.geometry('260x160')
     root.title('video downloader')
 
     def download_button_action(): #download button
