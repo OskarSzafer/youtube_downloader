@@ -14,7 +14,7 @@ def save_cut(
 
     start_time = time.time()
 
-    if vid_end != None and vid_start == None: # prevent moviepy.editor from crushing when only clip start time is set
+    if vid_end != None and vid_start == None: # prevent moviepy.editor from crushing when only clip end time is set
         vid_start = 0
 
     try:
