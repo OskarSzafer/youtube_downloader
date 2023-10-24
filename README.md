@@ -10,4 +10,4 @@ The GUI allows you to choose a movie, specify the desired fragment, and change t
 Leaving the "start time" and "end time" boxes empty will default to the beginning and end of the movie as the time interval.
 
 ## graphical user interface
-![SS](https://github.com/OskarSzafer/youtube_downloader/blob/main/GUI.png)
+<img src="https://github.com/OskarSzafer/youtube_downloader/blob/main/GUI.png" width="400">
