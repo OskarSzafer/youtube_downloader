@@ -8,3 +8,6 @@ The project uses python libraries and youtube API. It allows you to conveniently
 To run the application, download the required libraries and run the "main.py" file. <br>
 The GUI allows you to choose a movie, specify the desired fragment, and change the quality. <br>
 Leaving the "start time" and "end time" boxes empty will default to the beginning and end of the movie as the time interval.
+
+## graphical user interface
+<img src="https://github.com/OskarSzafer/youtube_downloader/blob/main/GUI.png" width="400">
