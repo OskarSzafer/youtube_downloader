@@ -12,8 +12,9 @@ def save_cut(
         vid_end=None,
         quality=0
     ):
-
+    vid_path = vid_path.replace('\\', '/')
     start_time = time.time()
+
 
     if vid_end != None and vid_start == None: # prevent moviepy.editor from crushing when only clip end time is set
         vid_start = 0
@@ -36,13 +37,13 @@ def save_cut(
         if vid_start != None or vid_end != None:
             orginal_file_name = yt.title.replace('.', '')
             orginal_file_name = orginal_file_name.replace(':', '').replace('\'', '')
-            if exists(f'{vid_path}\{orginal_file_name}.mp4'):
-                clip = VideoFileClip(f'{vid_path}\{orginal_file_name}.mp4').subclip(vid_start, vid_end)
+            if exists(f'{vid_path}/{orginal_file_name}.mp4'):
+                clip = VideoFileClip(f'{vid_path}/{orginal_file_name}.mp4').subclip(vid_start, vid_end)
             else:
-                clip = VideoFileClip(f'{vid_path}\{orginal_file_name}.3gpp').subclip(vid_start, vid_end)
-            clip.write_videofile(f'{vid_path}\{vid_name}.mp4')
-            make_transcript(f'{vid_path}\{vid_name}.mp4')
+                clip = VideoFileClip(f'{vid_path}/{orginal_file_name}.3gpp').subclip(vid_start, vid_end)
+            clip.write_videofile(f'{vid_path}/{vid_name}.mp4')
+            make_transcript(f'{vid_path}/{vid_name}')
         else:
             orginal_file_name = yt.title.replace('.', '')
             orginal_file_name = orginal_file_name.replace(':', '').replace('\'', '')
-            make_transcript(f'{vid_path}\{orginal_file_name}')
+            make_transcript(f'{vid_path}/{orginal_file_name}')
