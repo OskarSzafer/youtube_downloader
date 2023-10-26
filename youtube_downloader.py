@@ -2,6 +2,7 @@ from pytube import YouTube
 from moviepy.editor import VideoFileClip
 from os.path import exists
 import time
+from transcript import make_transcript
 
 def save_cut(
         vid_link,
@@ -40,3 +41,6 @@ def save_cut(
             else:
                 clip = VideoFileClip(f'{vid_path}\{orginal_file_name}.3gpp').subclip(vid_start, vid_end)
             clip.write_videofile(f'{vid_path}\{vid_name}.mp4')
+            make_transcript(f'{vid_path}\{vid_name}.mp4')
+        else:
+            make_transcript(f'{vid_path}\{orginal_file_name}.mp4')
