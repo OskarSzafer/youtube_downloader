@@ -30,6 +30,7 @@ def gui_main(
             vid_start=start_time, 
             vid_end=end_time,
             quality=quality)
+        
         download_button['state'] = NORMAL
 
     def switch_quality(): # quality buttons
