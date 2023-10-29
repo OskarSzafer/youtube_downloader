@@ -32,6 +32,7 @@ def gui_main(
             quality=quality)
         
         download_button['state'] = NORMAL
+        print('ready!')
 
     def switch_quality(): # quality buttons
         global quality
