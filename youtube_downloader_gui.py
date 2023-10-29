@@ -1,4 +1,4 @@
-from tkinter import *
+import tkinter as tk
 from youtube_downloader import save_cut
 
 def gui_main(
@@ -8,11 +8,11 @@ def gui_main(
     global quality
     quality = 0
 
-    root = Tk()
+    root = tk.Tk()
     root.title('video downloader')
 
     def download_button_action(): #download button
-        download_button['state'] = DISABLED
+        download_button['state'] = tk.DISABLED
 
         if vid_start_input.get() == "":
             start_time = None
@@ -31,41 +31,41 @@ def gui_main(
             vid_end=end_time,
             quality=quality)
         
-        download_button['state'] = NORMAL
+        download_button['state'] = tk.NORMAL
         print('ready!')
 
     def switch_quality(): # quality buttons
         global quality
         if quality == 0:
             quality = 1
-            quality_button_H['state'] = DISABLED
-            quality_button_L['state'] = NORMAL
+            quality_button_H['state'] = tk.DISABLED
+            quality_button_L['state'] = tk.NORMAL
         else:
             quality = 0
-            quality_button_L['state'] = DISABLED
-            quality_button_H['state'] = NORMAL
+            quality_button_L['state'] = tk.DISABLED
+            quality_button_H['state'] = tk.NORMAL
 
     #widgets:
     #url
-    url_text = Label(root, font=(font_type, content_scale), text='video URL:')
-    url_input = Entry(root, font=(font_type, content_scale), width=content_scale*3)
+    url_text = tk.Label(root, font=(font_type, content_scale), text='video URL:')
+    url_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale*3)
     #path
-    path_text = Label(root, font=(font_type, content_scale), text='path:')
-    path_input = Entry(root, font=(font_type, content_scale), width=content_scale*3)
+    path_text = tk.Label(root, font=(font_type, content_scale), text='path:')
+    path_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale*3)
     #file name
-    file_name_text = Label(root, font=(font_type, content_scale), text='file name:')
-    file_name_input = Entry(root, font=(font_type, content_scale), width=content_scale*3)
+    file_name_text = tk.Label(root, font=(font_type, content_scale), text='file name:')
+    file_name_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale*3)
     #quality
-    quality_text = Label(root, font=(font_type, content_scale), text='quality:')
-    quality_button_H = Button(root, font=(font_type, content_scale), padx=content_scale*6, text='high', command=switch_quality)
-    quality_button_L = Button(root, font=(font_type, content_scale), padx=content_scale*6, text='low', command=switch_quality, state=DISABLED)
+    quality_text = tk.Label(root, font=(font_type, content_scale), text='quality:')
+    quality_button_H = tk.Button(root, font=(font_type, content_scale), padx=content_scale*6, text='high', command=switch_quality)
+    quality_button_L = tk.Button(root, font=(font_type, content_scale), padx=content_scale*6, text='low', command=switch_quality, state=tk.DISABLED)
     #clip timing
-    vid_start_text = Label(root, font=(font_type, content_scale), text='start time:')
-    vid_start_input = Entry(root, font=(font_type, content_scale), width=content_scale)
-    vid_end_text = Label(root, font=(font_type, content_scale), text='end time:')
-    vid_end_input = Entry(root, font=(font_type, content_scale), width=content_scale)
+    vid_start_text = tk.Label(root, font=(font_type, content_scale), text='start time:')
+    vid_start_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
+    vid_end_text = tk.Label(root, font=(font_type, content_scale), text='end time:')
+    vid_end_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
     #download button
-    download_button = Button(root, font=(font_type, content_scale), text='download', command=download_button_action, padx=content_scale*2)
+    download_button = tk.Button(root, font=(font_type, content_scale), text='download', command=download_button_action, padx=content_scale*2)
 
     #grid:
     #url placement
@@ -79,14 +79,14 @@ def gui_main(
     file_name_input.grid(row=2, column=1,columnspan=2)
     #quality placement
     quality_text.grid(row=3, column=0)
-    quality_button_H.grid(row=3, column=1, sticky=E)
-    quality_button_L.grid(row=3, column=2, sticky=W)
+    quality_button_H.grid(row=3, column=1, sticky=tk.E)
+    quality_button_L.grid(row=3, column=2, sticky=tk.W)
     #clip timing placement
     vid_start_text.grid(row=4, column=0)
-    vid_start_input.grid(row=4, column=1,columnspan=1, sticky=W)
+    vid_start_input.grid(row=4, column=1,columnspan=1, sticky=tk.W)
     vid_end_text.grid(row=5, column=0)
-    vid_end_input.grid(row=5, column=1,columnspan=1, sticky=W)
+    vid_end_input.grid(row=5, column=1,columnspan=1, sticky=tk.W)
     #download button placement
-    download_button.grid(row=6, column=1,columnspan=2, sticky=S)
+    download_button.grid(row=6, column=1,columnspan=2, sticky=tk.S)
 
     root.mainloop()
