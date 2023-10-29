@@ -33,10 +33,9 @@ def save_cut(
         end_time = time.time()
 
         print(f'download time: {end_time-start_time:.2f}s')
+        orginal_file_name = yt.title.replace('.', '').replace(':', '').replace('\'', '')
 
         if vid_start != None or vid_end != None:
-            orginal_file_name = yt.title.replace('.', '')
-            orginal_file_name = orginal_file_name.replace(':', '').replace('\'', '')
             if exists(f'{vid_path}/{orginal_file_name}.mp4'):
                 clip = VideoFileClip(f'{vid_path}/{orginal_file_name}.mp4').subclip(vid_start, vid_end)
             else:
@@ -44,6 +43,4 @@ def save_cut(
             clip.write_videofile(f'{vid_path}/{vid_name}.mp4')
             make_transcript(f'{vid_path}/{vid_name}')
         else:
-            orginal_file_name = yt.title.replace('.', '')
-            orginal_file_name = orginal_file_name.replace(':', '').replace('\'', '')
             make_transcript(f'{vid_path}/{orginal_file_name}')
