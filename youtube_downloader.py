@@ -26,13 +26,14 @@ def save_cut(
             stream = yt.streams.get_highest_resolution()
         else:
             stream = yt.streams.first()
+
+        stream.download(vid_path)
     except:
         print('Video is unavaialable')
     else:
-        stream.download(vid_path)
         end_time = time.time()
-
         print(f'download time: {end_time-start_time:.2f}s')
+        
         orginal_file_name = yt.title.replace('.', '').replace(':', '').replace('\'', '')
 
         if vid_start != None or vid_end != None:
