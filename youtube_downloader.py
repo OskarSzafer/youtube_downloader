@@ -17,12 +17,12 @@ def replace_forbidden_characters(file_name: str) -> str:
 
 
 def save_cut(
-        vid_link,
-        vid_path,
-        vid_name,
-        vid_start=None,
-        vid_end=None,
-        quality=0
+        vid_link: str,
+        vid_path: str,
+        vid_name: str,
+        vid_start: int = None,
+        vid_end: int = None,
+        quality: int = 0
     ):
     vid_path = vid_path.replace('\\', '/')
 

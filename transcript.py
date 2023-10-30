@@ -7,7 +7,7 @@ from moviepy.editor import VideoFileClip
 
 model = whisper.load_model("small.en")
 
-def make_transcript(vid_path):
+def make_transcript(vid_path: str):
     try:
         video = VideoFileClip(vid_path)
         vid_path_mp3 = vid_path.replace('.mp4', '.mp3')

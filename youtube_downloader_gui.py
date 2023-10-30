@@ -1,15 +1,20 @@
+import os
+
 import tkinter as tk
 from youtube_downloader import save_cut
 
 def gui_main(
-        font_type="Calibri",
-        content_scale=15,
+        font_type: str="Calibri",
+        content_scale: int=15,
         ):
     global quality
     quality = 0
 
     root = tk.Tk()
     root.title('video downloader')
+
+    entry_var_default_path = tk.StringVar()
+    entry_var_default_path.set(os.path.dirname(__file__))  # get default path
 
     def download_button_action(): #download button
         download_button['state'] = tk.DISABLED
@@ -45,29 +50,61 @@ def gui_main(
             quality_button_L['state'] = tk.DISABLED
             quality_button_H['state'] = tk.NORMAL
 
-    #widgets:
+    #WIDGETS:
     #url
     url_text = tk.Label(root, font=(font_type, content_scale), text='video URL:')
-    url_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale*3)
+    url_input = tk.Entry(root, font=(font_type, content_scale), fg="gray", width=content_scale*3)
+    url_input.insert(0, 'https://www.youtube.com/') # default url
+
+    def url_input_click(event):
+        url_input.delete(0, tk.END)
+        url_input.configure(fg="black")
+
+    def url_input_leave(event):
+        if url_input.get() == "":
+            url_input.configure(fg="gray")
+            url_input.insert(0, 'https://www.youtube.com/')
+
+    url_input.bind("<FocusIn>", url_input_click)
+    url_input.bind("<FocusOut>", url_input_leave)
+
     #path
     path_text = tk.Label(root, font=(font_type, content_scale), text='path:')
-    path_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale*3)
+    path_input = tk.Entry(root, font=(font_type, content_scale), fg="gray", width=content_scale*3)
+    path_input.insert(0, entry_var_default_path.get()) # default path
+
+    def path_input_click(event):
+        path_input.delete(0, tk.END)
+        path_input.configure(fg="black")
+
+    def path_input_leave(event):
+        if path_input.get() == "":
+            path_input.configure(fg="gray")
+            path_input.insert(0, entry_var_default_path.get())
+    
+    path_input.bind("<FocusIn>", path_input_click)
+    path_input.bind("<FocusOut>", path_input_leave)
+
     #file name
     file_name_text = tk.Label(root, font=(font_type, content_scale), text='file name:')
     file_name_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale*3)
+
     #quality
     quality_text = tk.Label(root, font=(font_type, content_scale), text='quality:')
     quality_button_H = tk.Button(root, font=(font_type, content_scale), padx=content_scale*6, text='high', command=switch_quality)
     quality_button_L = tk.Button(root, font=(font_type, content_scale), padx=content_scale*6, text='low', command=switch_quality, state=tk.DISABLED)
+    
     #clip timing
     vid_start_text = tk.Label(root, font=(font_type, content_scale), text='start time:')
     vid_start_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
     vid_end_text = tk.Label(root, font=(font_type, content_scale), text='end time:')
     vid_end_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
+    
     #download button
     download_button = tk.Button(root, font=(font_type, content_scale), text='download', command=download_button_action, padx=content_scale*2)
 
-    #grid:
+
+    #GRID:
     #url placement
     url_text.grid(row=0, column=0)
     url_input.grid(row=0, column=1,columnspan=2)
