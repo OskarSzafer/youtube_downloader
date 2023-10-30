@@ -13,8 +13,10 @@ def gui_main(
     root = tk.Tk()
     root.title('video downloader')
 
+    entry_var_default_url = tk.StringVar()
+    entry_var_default_url.set("https://www.youtube.com/")  # set default url
     entry_var_default_path = tk.StringVar()
-    entry_var_default_path.set(os.path.dirname(__file__))  # get default path
+    entry_var_default_path.set(os.path.dirname(__file__))  # set default path
 
     def download_button_action(): #download button
         download_button['state'] = tk.DISABLED
@@ -54,16 +56,17 @@ def gui_main(
     #url
     url_text = tk.Label(root, font=(font_type, content_scale), text='video URL:')
     url_input = tk.Entry(root, font=(font_type, content_scale), fg="gray", width=content_scale*3)
-    url_input.insert(0, 'https://www.youtube.com/') # default url
+    url_input.insert(0, entry_var_default_url.get()) # default url
 
     def url_input_click(event):
-        url_input.delete(0, tk.END)
-        url_input.configure(fg="black")
+        if url_input.get() == entry_var_default_url.get():
+            url_input.delete(0, tk.END)
+            url_input.configure(fg="black")
 
     def url_input_leave(event):
         if url_input.get() == "":
             url_input.configure(fg="gray")
-            url_input.insert(0, 'https://www.youtube.com/')
+            url_input.insert(0, entry_var_default_url.get())
 
     url_input.bind("<FocusIn>", url_input_click)
     url_input.bind("<FocusOut>", url_input_leave)
@@ -74,8 +77,9 @@ def gui_main(
     path_input.insert(0, entry_var_default_path.get()) # default path
 
     def path_input_click(event):
-        path_input.delete(0, tk.END)
-        path_input.configure(fg="black")
+        if path_input.get() == entry_var_default_path.get():
+            path_input.delete(0, tk.END)
+            path_input.configure(fg="black")
 
     def path_input_leave(event):
         if path_input.get() == "":
