@@ -8,7 +8,7 @@ It allows you to download specific video fragments from the YouTube platform and
 - Whisper
 
 ## Running the Application:
-To run the application, download the required libraries and execute the "main.py" file. <br>
+To run the application, download the required libraries and execute the ```main.py``` file. <br>
 The GUI allows you to choose a movie, specify the desired fragment, and change the quality. <br>
 Leaving the "start time" and "end time" boxes empty will default to the beginning and end of the movie as the time interval.
 
