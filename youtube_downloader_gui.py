@@ -23,21 +23,21 @@ def gui_main(
     def download_button_action(): #download button
         download_button['state'] = tk.DISABLED
 
-        if vid_start_input.get() == "":
+        if video_start_input.get() == "":
             start_time = None
         else:
-            start_time = int(vid_start_input.get())
-        if vid_end_input.get() == "":
+            start_time = int(video_start_input.get())
+        if video_end_input.get() == "":
             end_time = None
         else:
-            end_time = int(vid_end_input.get())
+            end_time = int(video_end_input.get())
         
         save_cut(
             url_input.get(), 
             path_input.get(),
-            vid_name=file_name_input.get(),
-            vid_start=start_time, 
-            vid_end=end_time,
+            video_name=file_name_input.get(),
+            video_start=start_time, 
+            video_end=end_time,
             quality=quality)
         
         download_button['state'] = tk.NORMAL
@@ -101,10 +101,10 @@ def gui_main(
     quality_button_L = tk.Button(root, font=(font_type, content_scale), padx=content_scale*6, text='low', command=switch_quality, state=tk.DISABLED)
     
     #clip timing
-    vid_start_text = tk.Label(root, font=(font_type, content_scale), text='start time:')
-    vid_start_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
-    vid_end_text = tk.Label(root, font=(font_type, content_scale), text='end time:')
-    vid_end_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
+    video_start_text = tk.Label(root, font=(font_type, content_scale), text='start time:')
+    video_start_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
+    video_end_text = tk.Label(root, font=(font_type, content_scale), text='end time:')
+    video_end_input = tk.Entry(root, font=(font_type, content_scale), width=content_scale)
     
     #download button
     download_button = tk.Button(root, font=(font_type, content_scale), text='download', command=download_button_action, padx=content_scale*2)
@@ -125,10 +125,10 @@ def gui_main(
     quality_button_H.grid(row=3, column=1, sticky=tk.E)
     quality_button_L.grid(row=3, column=2, sticky=tk.W)
     #clip timing placement
-    vid_start_text.grid(row=4, column=0)
-    vid_start_input.grid(row=4, column=1,columnspan=1, sticky=tk.W)
-    vid_end_text.grid(row=5, column=0)
-    vid_end_input.grid(row=5, column=1,columnspan=1, sticky=tk.W)
+    video_start_text.grid(row=4, column=0)
+    video_start_input.grid(row=4, column=1,columnspan=1, sticky=tk.W)
+    video_end_text.grid(row=5, column=0)
+    video_end_input.grid(row=5, column=1,columnspan=1, sticky=tk.W)
     #download button placement
     download_button.grid(row=6, column=1,columnspan=2, sticky=tk.S)
 
