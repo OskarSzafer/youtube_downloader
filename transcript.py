@@ -1,11 +1,18 @@
 import os
 
-import whisper
+import torch
+from transformers import pipeline
 from pytube import YouTube
 from moviepy.editor import VideoFileClip
 
 
-model = whisper.load_model("small.en")
+pipe = pipeline(
+    "automatic-speech-recognition",
+    model="distil-whisper/distil-large-v2",
+    device="cpu",
+    torch_dtype=torch.float32,
+    max_new_tokens=128,
+)
 
 def make_transcript(video_path: str):
     try:
@@ -15,7 +22,7 @@ def make_transcript(video_path: str):
         video.audio.write_audiofile(video_path_mp3)
         video.close()
 
-        result = model.transcribe(video_path_mp3)
+        result = pipe(video_path_mp3)
 
         with open(video_path_txt, 'w') as file:
             text_to_write = result['text'].strip()

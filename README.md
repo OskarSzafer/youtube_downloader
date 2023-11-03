@@ -2,11 +2,6 @@
 This project is a Python-based YouTube video downloader that utilizes various Python libraries and the YouTube API.
 It allows you to download specific video fragments from the YouTube platform and save them to your selected location. Additionally, the project uses Whisper to automatically create transcripts from the downloaded video fragments.
 
-## Required Custom Python Libraries:
-- PyTube
-- MoviePy
-- Whisper
-
 ## Running the Application:
 To run the application, download the required libraries and execute the ```main.py``` file. <br>
 The GUI allows you to choose a movie, specify the desired fragment, and change the quality. <br>
