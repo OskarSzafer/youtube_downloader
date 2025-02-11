@@ -1,4 +1,4 @@
-transformers==4.38.0
+transformers==4.48.0
 torch==2.2.0
 pytube==15.0.0
 moviepy==1.0.3
